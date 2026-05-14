@@ -90,105 +90,107 @@ def replace_others(my_df):
     # new player 'OTHER' which sums their line count and percentage
     
     
-    # ACT 1
-    my_df_act_1 = my_df[my_df["Act"] == 1]
-    print(my_df_act_1.head())
+    # # ACT 1
+    # my_df_act_1 = my_df[my_df["Act"] == 1]
+    # print(my_df_act_1.head())
 
-    lines_per_players_act_1= my_df_act_1.groupby("Player")["Line"].count().sort_values(ascending=False)
-    print(lines_per_players_act_1.head())
+    # lines_per_players_act_1= my_df_act_1.groupby("Player")["Line"].count().sort_values(ascending=False)
+    # print(lines_per_players_act_1.head())
 
-    top_5_players_with_most_lines_act_1 = lines_per_players_act_1.head(5)
+    # top_5_players_with_most_lines_act_1 = lines_per_players_act_1.head(5)
 
-    print("This is the top 5 players with the most lines in act 1")
-    sum_rest_of_players = lines_per_players_act_1.iloc[5:].sum()
-    top_5_players_with_most_lines_act_1["OTHER"] = sum_rest_of_players
+    # print("This is the top 5 players with the most lines in act 1")
+    # sum_rest_of_players = lines_per_players_act_1.iloc[5:].sum()
+    # top_5_players_with_most_lines_act_1["OTHER"] = sum_rest_of_players
 
-    #top_5_players_with_most_lines_act_1["PercentCount"] = (top_5_players_with_most_lines_act_1["LineCount"]/top_5_players_with_most_lines_act_1["LineCount"].sum()) * 100
+    # #top_5_players_with_most_lines_act_1["PercentCount"] = (top_5_players_with_most_lines_act_1["LineCount"]/top_5_players_with_most_lines_act_1["LineCount"].sum()) * 100
 
-    print(top_5_players_with_most_lines_act_1)
+    # print(top_5_players_with_most_lines_act_1)
 
-    # ACT 2
-    my_df_act_2 = my_df[my_df["Act"] == 2]
-    print(my_df_act_2.head())
+    # # ACT 2
+    # my_df_act_2 = my_df[my_df["Act"] == 2]
+    # print(my_df_act_2.head())
 
-    lines_per_players_act_2 = my_df_act_2.groupby("Player")["Line"].count().sort_values(ascending=False)
-    print(lines_per_players_act_2.head())
+    # lines_per_players_act_2 = my_df_act_2.groupby("Player")["Line"].count().sort_values(ascending=False)
+    # print(lines_per_players_act_2.head())
 
-    top_5_players_with_most_lines_act_2 = lines_per_players_act_2.head(5)
+    # top_5_players_with_most_lines_act_2 = lines_per_players_act_2.head(5)
 
-    print("This is the top 5 players with the most lines in act 2")
-    sum_rest_of_players = lines_per_players_act_2.iloc[5:].sum()
-    top_5_players_with_most_lines_act_2["OTHER"] = sum_rest_of_players
-    print(top_5_players_with_most_lines_act_2)
+    # print("This is the top 5 players with the most lines in act 2")
+    # sum_rest_of_players = lines_per_players_act_2.iloc[5:].sum()
+    # top_5_players_with_most_lines_act_2["OTHER"] = sum_rest_of_players
+    # print(top_5_players_with_most_lines_act_2)
 
-    # ACT 3
-    my_df_act_3 = my_df[my_df["Act"] == 3]
-    print(my_df_act_3.head())
+    # # ACT 3
+    # my_df_act_3 = my_df[my_df["Act"] == 3]
+    # print(my_df_act_3.head())
 
-    lines_per_players_act_3 = my_df_act_3.groupby("Player")["Line"].count().sort_values(ascending=False)
-    print(lines_per_players_act_3.head())
+    # lines_per_players_act_3 = my_df_act_3.groupby("Player")["Line"].count().sort_values(ascending=False)
+    # print(lines_per_players_act_3.head())
 
-    top_5_players_with_most_lines_act_3 = lines_per_players_act_3.head(5)
+    # top_5_players_with_most_lines_act_3 = lines_per_players_act_3.head(5)
 
-    print("This is the top 5 players with the most lines in act 3")
-    sum_rest_of_players = lines_per_players_act_3.iloc[5:].sum()
-    top_5_players_with_most_lines_act_3["OTHER"] = sum_rest_of_players
-    print(top_5_players_with_most_lines_act_3)
-
-
-    # ACT 4
-    my_df_act_4 = my_df[my_df["Act"] == 4]
-    print(my_df_act_4.head())
+    # print("This is the top 5 players with the most lines in act 3")
+    # sum_rest_of_players = lines_per_players_act_3.iloc[5:].sum()
+    # top_5_players_with_most_lines_act_3["OTHER"] = sum_rest_of_players
+    # print(top_5_players_with_most_lines_act_3)
 
 
-    lines_per_players_act_4 = my_df_act_4.groupby("Player")["Line"].count().sort_values(ascending=False)
-    print(lines_per_players_act_4.head())
-
-    top_5_players_with_most_lines_act_4 = lines_per_players_act_4.head(5)
-
-    print("This is the top 5 players with the most lines in act 4")
-    sum_rest_of_players = lines_per_players_act_4.iloc[5:].sum()
-    top_5_players_with_most_lines_act_4["OTHER"] = sum_rest_of_players
-    print(top_5_players_with_most_lines_act_4)
+    # # ACT 4
+    # my_df_act_4 = my_df[my_df["Act"] == 4]
+    # print(my_df_act_4.head())
 
 
+    # lines_per_players_act_4 = my_df_act_4.groupby("Player")["Line"].count().sort_values(ascending=False)
+    # print(lines_per_players_act_4.head())
 
-    # ACT 5
-    my_df_act_5 = my_df[my_df["Act"] == 5]
-    print(my_df_act_5.head())
+    # top_5_players_with_most_lines_act_4 = lines_per_players_act_4.head(5)
 
-    lines_per_players_act_5 = my_df_act_5.groupby("Player")["Line"].count().sort_values(ascending=False)
-    print(lines_per_players_act_5.head())
+    # print("This is the top 5 players with the most lines in act 4")
+    # sum_rest_of_players = lines_per_players_act_4.iloc[5:].sum()
+    # top_5_players_with_most_lines_act_4["OTHER"] = sum_rest_of_players
+    # print(top_5_players_with_most_lines_act_4)
 
-    top_5_players_with_most_lines_act_5 = lines_per_players_act_5.head(5)
 
-    print("This is the top 5 players with the most lines in act 5")
-    sum_rest_of_players = lines_per_players_act_5.iloc[5:].sum()
-    top_5_players_with_most_lines_act_5["OTHER"] = sum_rest_of_players
-    print(top_5_players_with_most_lines_act_5)
+
+    # # ACT 5
+    # my_df_act_5 = my_df[my_df["Act"] == 5]
+    # print(my_df_act_5.head())
+
+    # lines_per_players_act_5 = my_df_act_5.groupby("Player")["Line"].count().sort_values(ascending=False)
+    # print(lines_per_players_act_5.head())
+
+    # top_5_players_with_most_lines_act_5 = lines_per_players_act_5.head(5)
+
+    # print("This is the top 5 players with the most lines in act 5")
+    # sum_rest_of_players = lines_per_players_act_5.iloc[5:].sum()
+    # top_5_players_with_most_lines_act_5["OTHER"] = sum_rest_of_players
+    # print(top_5_players_with_most_lines_act_5)
     
-    
+    ################### SOMETHING IS OFF HERE ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ## ABOVE WAS A TEST HOW TO DO IT MANUALLY
     #SORT BY ACT IN ASCENDING ORDER
-    my_df = my_df.sort_values(["Act","PlayerLine"], ascending = [True,False])
+    # my_df = my_df.sort_values(["Act","PlayerLine"], ascending = [True,False])
+    my_df = my_df.sort_values(["PlayerLine"], ascending = False)
     my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2.csv",index=False)
     
-    #RANK EACH
-    my_df["Rank"] = my_df.groupby("Act")["PlayerLine"].rank(method = "first", ascending = False)
-    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v1.csv",index=False)
+    #RANK EACH player for the entire play
+    my_df_ranked_and_grouped_by = my_df.groupby("Player", as_index=False)[["Line", "PlayerLine", "PlayerPercent"]].sum().assign(Rank=lambda df: df["PlayerLine"].rank(method="first", ascending=False).astype(int)).sort_values("Rank")
+    my_df["Rank"] = my_df["PlayerLine"].rank(method = "first", ascending = False)
+    my_df_ranked_and_grouped_by.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v1_1.csv",index=False)
 
-    my_df_1 = my_df.loc[my_df["Rank"] > 5, "Are you OTHER"] = "OTHER"
-    my_df_1 = my_df[my_df["Are you OTHER"] == "OTHER"]
+    my_df_1 = my_df_ranked_and_grouped_by.loc[my_df_ranked_and_grouped_by["Rank"] > 5, "Are you OTHER"] = "OTHER"
+    my_df_1 = my_df_ranked_and_grouped_by[my_df_ranked_and_grouped_by["Are you OTHER"] == "OTHER"]
     my_df_1.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_2.csv",index=False)
 
 
     ## PUT THE ONES AFTER RANK=5 IN CATEGORY OTHER , replace their names with OTHER
-    my_df.loc[my_df["Rank"] > 5, "Player"] = "OTHER"
-    my_df = my_df.groupby(["Act","Player"],as_index=False).agg({ "Line":"sum", "PlayerLine": "sum", "PlayerPercent":"sum"})
-    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v3.csv",index=False)
+    my_df_ranked_and_grouped_by.loc[my_df_ranked_and_grouped_by["Rank"] > 5, "Player"] = "OTHER"
+    my_df_ranked_and_grouped_by = my_df_ranked_and_grouped_by.groupby(["Player"],as_index=False).agg({ "Line":"sum", "PlayerLine": "sum", "PlayerPercent":"sum"})
+    my_df_ranked_and_grouped_by.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v3.csv",index=False)
 
     return my_df
-
+# END OF WHAT IS OFF -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def clean_names(my_df):
     '''
