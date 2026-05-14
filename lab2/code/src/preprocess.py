@@ -214,7 +214,7 @@ def clean_names(my_df):
     '''
     # TODO : Clean the player names
     
-    my_df["Player"] = my_df["Player"].str.capitalize()
+    my_df["Player"] = my_df["Player"].str.title()
     my_df = my_df.groupby(["Act", "Player"], as_index=False)[["Line", "PlayerLine", "PlayerPercent"]].sum()
     my_df.to_csv(DATA_DIR / "my_df-FINAL_PART_3.csv",index=False)
     print(my_df) 
