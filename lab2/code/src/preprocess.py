@@ -56,7 +56,7 @@ def summarize_lines(my_df):
 
     print( "_______________________________________________")
     #PERCENTAGE OF LINE PER PLAYER PER ACT IN A NEW COLUMN
-    my_df["PlayerPercent"] = (my_df["PlayerLine"] / my_df.groupby("Player")["Line"].transform("sum") *100)
+    my_df["PlayerPercent"] = (my_df["PlayerLine"] / my_df.groupby("Act")["Line"].transform("sum") *100)
 
     print( "_______________________________________________")
     my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_1.csv",index=False)
