@@ -177,14 +177,15 @@ def replace_others(my_df):
     my_df["Rank"] = my_df.groupby("Act")["PlayerLine"].rank(method = "first", ascending = False)
     my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v1.csv",index=False)
 
-    my_df.loc[my_df["Rank"] > 5, "Are you OTHER"] = "OTHER"
-    my_df = my_df[my_df["Are you OTHER"] == "OTHER"]
-    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_2.csv",index=False)
+    my_df_1 = my_df.loc[my_df["Rank"] > 5, "Are you OTHER"] = "OTHER"
+    my_df_1 = my_df[my_df["Are you OTHER"] == "OTHER"]
+    my_df_1.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_2.csv",index=False)
 
 
     ## PUT THE ONES AFTER RANK=5 IN CATEGORY OTHER , replace their names with OTHER
     my_df.loc[my_df["Rank"] > 5, "Player"] = "OTHER"
-    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v2.csv",index=False)
+    my_df = my_df.groupby(["Act","Player"],as_index=False).agg({ "Line":"sum", "PlayerLine": "sum", "PlayerPercent":"sum"})
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v3.csv",index=False)
 
     return my_df
 
@@ -200,7 +201,7 @@ def clean_names(my_df):
     # TODO : Clean the player names
     
     my_df["Player"] = my_df["Player"].str.capitalize()
-
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_3.csv",index=False)
     print(my_df)    
     return my_df
 
