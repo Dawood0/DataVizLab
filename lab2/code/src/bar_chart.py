@@ -5,6 +5,7 @@
 
 import plotly.graph_objects as go
 import plotly.io as pio
+import pandas as pd
 
 from hover_template import get_hover_template
 from modes import MODES, MODE_TO_COLUMN
@@ -33,9 +34,11 @@ def init_figure():
         template=template,
         title='Lines per Act',
         dragmode=False,
-        barmode='relative'
+        barmode='stack',
+        xaxis = dict(type= "category")
     )
     
+    return fig
     
     
 def draw(fig, data, mode):
@@ -51,27 +54,18 @@ def draw(fig, data, mode):
     '''
     fig = go.Figure(fig)  # conversion back to Graph Object
     # TODO : Update the figure's data according to the selected mode
-    
-    data["Lines"] = (
-    data.groupby(["Act", "Player"])["Line"].transform("count"))
-
-    mode = "Lines"
-
-    fig = go.Figure(fig)  # conversion back to Graph Object
     fig.data = []
 
-
     for player in data["Player"].unique():
-
-        player_data = data[data["Player"] == player]
-
-        fig.add_trace(
-            go.Bar(
-                x=player_data["Act"],
-                y=player_data[mode],
-                name=player
-            )
-        )
+       player_data = data[data["Player"]== player] 
+       
+       fig.add_trace(
+           go.Bar(
+               x = player_data["Act"],
+               y = player_data["PlayerLine"],
+               name=player
+           )
+       )
     fig.show()
     
     return fig
@@ -89,19 +83,16 @@ def update_y_axis(fig, mode):
     '''
     # TODO : Update the y axis title according to the current mode
     
-    data["Lines"] = (data.groupby(["Act", "Player"])["Line"].transform("count"))
-    data["Lines%"] = ((data.groupby(["Act", "Player"])["Line"].transform("count"))/ data.groupby("Act")["Line"].transform("count")) * 100
-
-    #pick between count of percent
-    whichone = "count"
+    # PICK BETWEEN PERCENT OR COUNT 
+    whichone = "percent"
 
     if whichone == "percent":
-            fig.update_yaxes(title_text="Lines as a percentage")
-            mode = "Lines%"
+            fig.update_yaxes(title_text="Lines (%)")
+            mode = "PlayerPercent"
 
     else:
-        fig.update_yaxes(title_text="Lines as a count")
-        mode = "Lines"
+        fig.update_yaxes(title_text="Lines (Count)")
+        mode = "PlayerLine"
 
 
     fig = go.Figure(fig)  # conversion back to Graph Object
@@ -125,24 +116,10 @@ def update_y_axis(fig, mode):
 
 if __name__ == "__main__":
 
-    import pandas as pd
-
-    # Read data
-    data = pd.read_csv(
-        r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\romeo_and_juliet.csv"
-    )
-
-    # Initialize figure
-    fig = init_figure()
-
-    # Choose mode
     mode = "Lines"
-
-    # Draw chart
+    data = pd.read_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_3.csv")
+    fig = init_figure()
     fig = draw(fig, data, mode)
-
-    # Update y axis
     fig = update_y_axis(fig, mode)
 
-    # Show chart
-    fig.show()
+    

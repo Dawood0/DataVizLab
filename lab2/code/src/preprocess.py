@@ -210,15 +210,8 @@ def clean_names(my_df):
 
 if __name__ == "__main__":
 
-    # Read data
-    my_df = pd.read_csv(
-        r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\romeo_and_juliet.csv"
-    )
-
-    # Run functions
+    my_df = pd.read_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\romeo_and_juliet.csv")
     my_df = summarize_lines(my_df)
     my_df = replace_others(my_df)
     my_df = clean_names(my_df)
-
-    # Print result
     print(my_df.head())
