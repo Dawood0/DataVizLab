@@ -59,7 +59,7 @@ def summarize_lines(my_df):
     my_df["PlayerPercent"] = (my_df["PlayerLine"] / my_df.groupby("Player")["Line"].transform("sum") *100)
 
     print( "_______________________________________________")
-    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df.csv",index=False)
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_1.csv",index=False)
     return my_df
 
 
@@ -166,6 +166,25 @@ def replace_others(my_df):
     sum_rest_of_players = lines_per_players_act_5.iloc[5:].sum()
     top_5_players_with_most_lines_act_5["OTHER"] = sum_rest_of_players
     print(top_5_players_with_most_lines_act_5)
+    
+    
+    ## ABOVE WAS A TEST HOW TO DO IT MANUALLY
+    #SORT BY ACT IN ASCENDING ORDER
+    my_df = my_df.sort_values(["Act","PlayerLine"], ascending = [True,False])
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2.csv",index=False)
+    
+    #RANK EACH
+    my_df["Rank"] = my_df.groupby("Act")["PlayerLine"].rank(method = "first", ascending = False)
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v1.csv",index=False)
+
+    my_df.loc[my_df["Rank"] > 5, "Are you OTHER"] = "OTHER"
+    my_df = my_df[my_df["Are you OTHER"] == "OTHER"]
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_2.csv",index=False)
+
+
+    ## PUT THE ONES AFTER RANK=5 IN CATEGORY OTHER , replace their names with OTHER
+    my_df.loc[my_df["Rank"] > 5, "Player"] = "OTHER"
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v2.csv",index=False)
 
     return my_df
 
