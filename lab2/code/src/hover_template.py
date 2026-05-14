@@ -27,4 +27,7 @@ def get_hover_template(name, mode):
     '''
     # TODO: Generate and return the over template
 
-    return ''
+    if mode == MODES['count']:
+        return f'<b>{name}</b><br>{{y}} lines<extra></extra>'
+    else:
+        return f'<b>{name}</b><br>%{{y:.2f}}% of lines<extra></extra>'

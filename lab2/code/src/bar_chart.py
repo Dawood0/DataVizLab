@@ -6,6 +6,7 @@
 import plotly.graph_objects as go
 import plotly.io as pio
 import pandas as pd
+from pathlib import Path
 
 from hover_template import get_hover_template
 from modes import MODES, MODE_TO_COLUMN
@@ -63,7 +64,10 @@ def draw(fig, data, mode):
            go.Bar(
                x = player_data["Act"],
                y = player_data["PlayerLine"],
-               name=player
+               name=player,
+                # hovertemplate=get_hover_template(player, mode)
+                hovertemplate=get_hover_template(player, 'Count')
+
            )
        )
     fig.show()
@@ -107,7 +111,8 @@ def update_y_axis(fig, mode):
             go.Bar(
                 x=player_data["Act"],
                 y=player_data[mode],
-                name=player
+                name=player,
+                hovertemplate=get_hover_template(player, whichone)  # instead of 'whichone' it should be 'mode' we can change later 
             )
         )
     fig.show()
@@ -117,7 +122,8 @@ def update_y_axis(fig, mode):
 if __name__ == "__main__":
 
     mode = "Lines"
-    data = pd.read_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_3.csv")
+    data_path = Path(__file__).resolve().parent / "assets" / "data" / "my_df-FINAL_PART_3.csv"
+    data = pd.read_csv(data_path)
     fig = init_figure()
     fig = draw(fig, data, mode)
     fig = update_y_axis(fig, mode)
