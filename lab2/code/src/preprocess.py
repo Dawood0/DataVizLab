@@ -45,20 +45,20 @@ def summarize_lines(my_df):
     print("the sum is " + str(player_lines_percentages.sum()))
 
     print( "_______________________________________________")
+    #GROUPBY
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df_1.csv",index=False)
+    my_df = my_df.drop(columns=["Scene"])
+    my_df = (my_df.groupby(["Act", "Player"], as_index=False)["Line"].count())
+    my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df_2.csv",index=False)
+    
     #NUMBER OF LINE PER PLAYER PER ACT IN A NEW COLUMN
-    my_df["PlayerLine"] = my_df.groupby(["Act", "Player"])["Line"].transform("count")
-
-
+    my_df["PlayerLine"] = my_df.groupby(["Act", "Player"])["Line"].transform("sum")
 
     print( "_______________________________________________")
     #PERCENTAGE OF LINE PER PLAYER PER ACT IN A NEW COLUMN
-    my_df["PlayerPercent"] = (my_df["PlayerLine"] / my_df.groupby("Player")["Line"].transform("count") *100)
-
-
+    my_df["PlayerPercent"] = (my_df["PlayerLine"] / my_df.groupby("Player")["Line"].transform("sum") *100)
 
     print( "_______________________________________________")
-
-
     my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df.csv",index=False)
     return my_df
 
