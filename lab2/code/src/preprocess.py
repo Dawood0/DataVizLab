@@ -167,6 +167,10 @@ def replace_others(my_df):
     # top_5_players_with_most_lines_act_5["OTHER"] = sum_rest_of_players
     # print(top_5_players_with_most_lines_act_5)
     
+    
+    
+    
+    
     ################### SOMETHING IS OFF HERE ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ## ABOVE WAS A TEST HOW TO DO IT MANUALLY
     #SORT BY ACT IN ASCENDING ORDER
@@ -179,14 +183,17 @@ def replace_others(my_df):
     my_df["Rank"] = my_df["PlayerLine"].rank(method = "first", ascending = False)
     my_df_ranked_and_grouped_by.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v1_1.csv",index=False)
 
-    my_df_1 = my_df_ranked_and_grouped_by.loc[my_df_ranked_and_grouped_by["Rank"] > 5, "Are you OTHER"] = "OTHER"
+    my_df_ranked_and_grouped_by["Are you OTHER"] = ""
+    my_df_ranked_and_grouped_by.loc[my_df_ranked_and_grouped_by["Rank"] > 5, "Are you OTHER"] = "OTHER"
+    my_df_ranked_and_grouped_by.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_list_other.csv",index=False)
     my_df_1 = my_df_ranked_and_grouped_by[my_df_ranked_and_grouped_by["Are you OTHER"] == "OTHER"]
     my_df_1.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_2.csv",index=False)
-
+    my_df.loc[my_df["Player"].isin(my_df_1["Player"]), "Player"] = "OTHER"
 
     ## PUT THE ONES AFTER RANK=5 IN CATEGORY OTHER , replace their names with OTHER
-    my_df_ranked_and_grouped_by.loc[my_df_ranked_and_grouped_by["Rank"] > 5, "Player"] = "OTHER"
-    my_df_ranked_and_grouped_by = my_df_ranked_and_grouped_by.groupby(["Player"],as_index=False).agg({ "Line":"sum", "PlayerLine": "sum", "PlayerPercent":"sum"})
+    my_df_ranked_and_grouped_by.loc[my_df_ranked_and_grouped_by["Are you OTHER"] == "OTHER", "Player"] = "OTHER"
+    my_df_ranked_and_grouped_by = my_df_ranked_and_grouped_by.drop(columns=["Are you OTHER"])
+    my_df_ranked_and_grouped_by = my_df_ranked_and_grouped_by.groupby(["Player"], as_index=False)[["Line", "PlayerLine", "PlayerPercent"]].sum()
     my_df_ranked_and_grouped_by.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_dfPart2_v3.csv",index=False)
 
     return my_df
@@ -203,8 +210,13 @@ def clean_names(my_df):
     # TODO : Clean the player names
     
     my_df["Player"] = my_df["Player"].str.capitalize()
+    my_df = my_df.groupby(["Act", "Player"], as_index=False)[["Line", "PlayerLine", "PlayerPercent"]].sum()
     my_df.to_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab2\code\src\assets\data\my_df-FINAL_PART_3.csv",index=False)
-    print(my_df)    
+    print(my_df) 
+    
+    
+    
+       
     return my_df
 
 
