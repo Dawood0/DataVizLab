@@ -35,21 +35,21 @@ def summarize_lines(my_df):
     my_df = pd.read_csv(DATA_DIR / "romeo_and_juliet.csv")
     # uisng relative path 
     # my_df = pd.read_csv(r"assets\data\romeo_and_juliet.csv")
-    print(my_df.head())
+    # print(my_df.head())
 
-    print( "_______________________________________________")
+    # print( "_______________________________________________")
     # NUMBER OF LINES PER PLAYER
     player_lines_count = my_df.groupby("Player")["Line"].count()
-    print(player_lines_count.head())
+    # print(player_lines_count.head())
 
-    print( "_______________________________________________")
+    # print( "_______________________________________________")
     #PERCENTAGE OF LINES PER PLAYER
     player_lines_percentages = my_df.groupby("Player")["Line"].count() / my_df["Line"].count() *100
-    print(player_lines_percentages)
+    # print(player_lines_percentages)
 
-    print("the sum is " + str(player_lines_percentages.sum()))
+    # print("the sum is " + str(player_lines_percentages.sum()))
 
-    print( "_______________________________________________")
+    # print( "_______________________________________________")
     #GROUPBY
     my_df.to_csv(DATA_DIR / "my_df_1.csv",index=False)
     my_df = my_df.drop(columns=["Scene"])
@@ -59,11 +59,11 @@ def summarize_lines(my_df):
     #NUMBER OF LINE PER PLAYER PER ACT IN A NEW COLUMN
     my_df["PlayerLine"] = my_df.groupby(["Act", "Player"])["Line"].transform("sum")
 
-    print( "_______________________________________________")
+    # print( "_______________________________________________")
     #PERCENTAGE OF LINE PER PLAYER PER ACT IN A NEW COLUMN
     my_df["PlayerPercent"] = (my_df["PlayerLine"] / my_df.groupby("Act")["Line"].transform("sum") *100)
 
-    print( "_______________________________________________")
+    # print( "_______________________________________________")
     my_df.to_csv(DATA_DIR / "my_df-FINAL_PART_1.csv",index=False)
     return my_df
 
@@ -217,7 +217,7 @@ def clean_names(my_df):
     my_df["Player"] = my_df["Player"].str.title()
     my_df = my_df.groupby(["Act", "Player"], as_index=False)[["Line", "PlayerLine", "PlayerPercent"]].sum()
     my_df.to_csv(DATA_DIR / "my_df-FINAL_PART_3.csv",index=False)
-    print(my_df) 
+    # print(my_df) 
     
     
     
@@ -227,10 +227,10 @@ def clean_names(my_df):
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    my_df = pd.read_csv(DATA_DIR / "romeo_and_juliet.csv")
-    my_df = summarize_lines(my_df)
-    my_df = replace_others(my_df)
-    my_df = clean_names(my_df)
-    print(my_df.head())
+#     my_df = pd.read_csv(DATA_DIR / "romeo_and_juliet.csv")
+#     my_df = summarize_lines(my_df)
+#     my_df = replace_others(my_df)
+#     my_df = clean_names(my_df)
+#     print(my_df.head())

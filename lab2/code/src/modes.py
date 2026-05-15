@@ -3,5 +3,5 @@
     display modes, Percent and Count.
 '''
 
-MODES = dict(count='Count', percent='Percent')
-MODE_TO_COLUMN = {MODES['count']: 'LineCount', MODES['percent']: 'LinePercent'}
+MODES = dict(Count='Count', Percent='Percent')
+MODE_TO_COLUMN = {MODES['Count']: 'PlayerLine', MODES['Percent']: 'PlayerPercent'}

@@ -1,7 +1,7 @@
 '''
     Provides the template for the hover tooltips.
 '''
-from modes import MODES
+from modes import MODE_TO_COLUMN, MODES
 
 
 def get_hover_template(name, mode):
@@ -27,7 +27,7 @@ def get_hover_template(name, mode):
     '''
     # TODO: Generate and return the over template
 
-    if mode == MODES['count']:
-        return f'<b>{name}</b><br>{{y}} lines<extra></extra>'
+    if mode == 'Count':
+        return f'<b>{name}</b><br>%{{y}} lines<extra></extra>'
     else:
         return f'<b>{name}</b><br>%{{y:.2f}}% of lines<extra></extra>'

@@ -11,9 +11,9 @@
 '''
 
 
+
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
+from dash import html, dcc
 from dash.dependencies import Input, Output, State
 
 import pandas as pd
@@ -81,7 +81,7 @@ def init_app_layout(figure):
                     html.P('Use the radio buttons to change the display.'),
                     html.P(children=[
                         html.Span('The current mode is : '),
-                        html.Span(MODES['count'], id='mode')
+                        html.Span(MODES['Count'], id='mode')
                     ])
                 ]),
                 html.Div(children=[
@@ -89,13 +89,13 @@ def init_app_layout(figure):
                         id='radio-items',
                         options=[
                             dict(
-                                label=MODES['count'],
-                                value=MODES['count']),
+                                label=MODES['Count'],
+                                value=MODES['Count']),
                             dict(
-                                label=MODES['percent'],
-                                value=MODES['percent']),
+                                label=MODES['Percent'],
+                                value=MODES['Percent']),
                         ],
-                        value=MODES['count']
+                        value=MODES['Count']
                     )
                 ])
             ])
@@ -123,7 +123,7 @@ def radio_updated(mode, figure):
     # text indicating the mode
     new_fig = figure
     bar_chart.draw(new_fig, data, mode)
-    bar_chart.update_y_axis(new_fig, mode)
+    new_fig = bar_chart.update_y_axis(new_fig, data, mode)
     
     return new_fig, mode
 
@@ -133,5 +133,6 @@ data = prep_data()
 create_template()
 
 fig = bar_chart.init_figure()
+fig,_ = radio_updated(MODES['Count'], fig)
 
 app.layout = init_app_layout(fig)

@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import pandas as pd
 from pathlib import Path
-
+from template import create_template
 from hover_template import get_hover_template
 from modes import MODES, MODE_TO_COLUMN
 
@@ -63,19 +63,20 @@ def draw(fig, data, mode):
        fig.add_trace(
            go.Bar(
                x = player_data["Act"],
-               y = player_data["PlayerLine"],
+               y = player_data[MODE_TO_COLUMN[MODES[mode]]],
                name=player,
                 # hovertemplate=get_hover_template(player, mode)
-                hovertemplate=get_hover_template(player, 'Count')
+                hovertemplate=get_hover_template(player, mode)
 
            )
        )
-    fig.show()
+    # fig.show()
     
     return fig
 
 
-def update_y_axis(fig, mode):
+
+def update_y_axis(fig, data, mode='Count'):
     '''
         Updates the y axis to say 'Lines (%)' or 'Lines (Count) depending on
         the current display.
@@ -88,18 +89,18 @@ def update_y_axis(fig, mode):
     # TODO : Update the y axis title according to the current mode
     
     # PICK BETWEEN PERCENT OR COUNT 
-    whichone = "percent"
+    mode = MODES[mode]
+    PlayerMode = MODE_TO_COLUMN[mode]
 
-    if whichone == "percent":
-            fig.update_yaxes(title_text="Lines (%)")
-            mode = "PlayerPercent"
-
-    else:
-        fig.update_yaxes(title_text="Lines (Count)")
-        mode = "PlayerLine"
 
 
     fig = go.Figure(fig)  # conversion back to Graph Object
+
+    if mode == "Percent":
+        fig.update_yaxes(title_text="Lines (%)")
+    else:
+        fig.update_yaxes(title_text="Lines (Count)")
+
     fig.data = []
 
 
@@ -110,22 +111,25 @@ def update_y_axis(fig, mode):
         fig.add_trace(
             go.Bar(
                 x=player_data["Act"],
-                y=player_data[mode],
+                y=player_data[PlayerMode],
                 name=player,
-                hovertemplate=get_hover_template(player, whichone)  # instead of 'whichone' it should be 'mode' we can change later 
+                hovertemplate=get_hover_template(player, mode)  # instead of 'whichone' it should be 'mode' we can change later 
             )
         )
-    fig.show()
+    # fig.show()
+    return fig
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    mode = "Lines"
-    data_path = Path(__file__).resolve().parent / "assets" / "data" / "my_df-FINAL_PART_3.csv"
-    data = pd.read_csv(data_path)
-    fig = init_figure()
-    fig = draw(fig, data, mode)
-    fig = update_y_axis(fig, mode)
+#     mode = "Percent"
+#     data_path = Path(__file__).resolve().parent / "assets" / "data" / "my_df-FINAL_PART_3.csv"
+#     data = pd.read_csv(data_path)
+#     fig = init_figure()
+#     create_template()
+#     fig = draw(fig, data, mode)
+#     fig = update_y_axis(fig, mode)
+#     fig.show()
 
     
