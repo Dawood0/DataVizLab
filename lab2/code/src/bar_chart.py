@@ -36,7 +36,7 @@ def init_figure():
         title='Lines per Act',
         dragmode=False,
         barmode='stack',
-        xaxis = dict(type= "category")
+        xaxis = dict(type= "category", tickprefix='Act ')
     )
     
     return fig

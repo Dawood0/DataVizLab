@@ -28,6 +28,6 @@ def get_hover_template(name, mode):
     # TODO: Generate and return the over template
 
     if mode == 'Count':
-        return f'<b>{name}</b><br>%{{y}} lines<extra></extra>'
+        return f'<b style="font-family: Grenze Gotisch; font-size: 24px; color: black;">{name}</b><br>%{{y}} lines<extra></extra>'
     else:
-        return f'<b>{name}</b><br>%{{y:.2f}}% of lines<extra></extra>'
+        return f'<b style="font-family: Grenze Gotisch; font-size: 24px; color: black;">{name}</b><br>%{{y:.2f}}% of lines<extra></extra>'
