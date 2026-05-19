@@ -119,17 +119,3 @@ def update_y_axis(fig, data, mode='Count'):
     # fig.show()
     return fig
 
-
-
-# if __name__ == "__main__":
-
-#     mode = "Percent"
-#     data_path = Path(__file__).resolve().parent / "assets" / "data" / "my_df-FINAL_PART_3.csv"
-#     data = pd.read_csv(data_path)
-#     fig = init_figure()
-#     create_template()
-#     fig = draw(fig, data, mode)
-#     fig = update_y_axis(fig, mode)
-#     fig.show()
-
-    
