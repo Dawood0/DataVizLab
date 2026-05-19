@@ -26,6 +26,12 @@ def get_hover_template(name, mode):
             The hover template with the elements descibed above
     '''
     # TODO: Generate and return the over template
+    if mode == 'Count':
+        return f'<b style="font-family: Grenze Gotisch; font-size: 24px; color:black;">''%{x}</b><br>'f'<b>Player</b>:{name} </b><br><b>Lines</b>:%{{y}}<extra></extra>'
+    else:
+        return f'<b style="font-family: Grenze Gotisch; font-size: 24px; color:black;">''%{x}</b><br>'f'<b>Player</b>:{name} </b><br><b>Percent</b>:%{{y:.2f}}% of lines<extra></extra>'
+
+
 
     if mode == 'Count':
         return f'<b style="font-family: Grenze Gotisch; font-size: 24px; color: black;">{name}</b><br>%{{y}} lines<extra></extra>'
