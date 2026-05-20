@@ -118,4 +118,3 @@ def update_y_axis(fig, data, mode='Count'):
         )
     # fig.show()
     return fig
-
