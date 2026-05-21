@@ -23,23 +23,25 @@ def get_figure(data):
 
     # TODO : Create the heatmap. Make sure to set dragmode=False in
     # the layout. Also don't forget to include the hover template.
+    data = data.rename(columns={"Arrond_Nom": "Neighborhood","Date_Plantation": "Year","Counts": "Trees"})
+    print(data)
+    
+        
+    heatmap_data = data.pivot_table(index="Neighborhood",columns="Year",values="Trees",aggfunc="sum",fill_value=0)
+    fig = px.imshow(heatmap_data,x=heatmap_data.columns,y=heatmap_data.index,color_continuous_scale="Viridis",labels=dict(x="Year", y="Neighborhood", color="Trees"),aspect="auto")
+    #Make sure to set dragmode=False in
+    fig.update_layout(dragmode=False)
 
+    fig.update_xaxes(tickmode="array",tickvals=list(heatmap_data.columns),ticktext=list(heatmap_data.columns))
+    #Also don't forget to include the hover template.
+    fig.update_traces(hovertemplate=hover_template.get_heatmap_hover_template()
+)
 
-    fig = px.imshow(data, x=data.columns , y=data.index , color_continuous_scale="Viridis")
-    
-    fig.update_layout( dragmode=False, xaxis_title="Year", yaxis_title="Neighborhood", coloraxis_colorbar_title="Trees")
-    
-    fig.update_xaxes(tickmode="array", tickvals=list(data.columns))
-    
-    fig.update_traces(hovertemplate = hover_template.get_heatmap_hover_template())
-
-    fig.show()
-    
     return fig
     #return None
 
 def main():
-    data = pd.read_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab3\src\assets\data\arbres.csv",index_col=0)
+    data = pd.read_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab3\src\assets\data\yearly-counts.csv",index_col=0)
 
     fig = get_figure(data)
     fig.show()
