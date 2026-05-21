@@ -14,6 +14,7 @@ def convert_dates(dataframe):
             The processed dataframe with datetime-formatted dates.
     '''
     # TODO : Convert dates
+    dataframe["Date_Plantation"] = pd.to_datetime(dataframe["Date_Plantation"])
     return dataframe
 
 
@@ -30,6 +31,7 @@ def filter_years(dataframe, start, end):
             The dataframe filtered by date.
     '''
     # TODO : Filter by dates
+    dataframe = dataframe[dataframe["Date_Plantation"].dt.year.between(start, end)]
     return dataframe
 
 
@@ -47,7 +49,8 @@ def summarize_yearly_counts(dataframe):
             trees for each neighborhood each year.
     '''
     # TODO : Summarize df
-    return None
+    counts = dataframe.groupby(["Arrond_Nom", dataframe["Date_Plantation"].dt.year]).size().reset_index(name="Counts")
+    return counts
 
 
 def restructure_df(yearly_df):
@@ -69,7 +72,8 @@ def restructure_df(yearly_df):
             The restructured dataframe
     '''
     # TODO : Restructure df and fill empty cells with 0
-    return None
+    restructured = yearly_df.pivot(index="Arrond_Nom", columns="Date_Plantation").fillna(0)
+    return restructured
 
 
 def get_daily_info(dataframe, arrond, year):
@@ -87,4 +91,30 @@ def get_daily_info(dataframe, arrond, year):
             neighborhood and year.
     '''
     # TODO : Get daily tree count data and return
-    return None
+    fitlered = dataframe[(dataframe["Arrond_Nom"]== "Ahuntsic - Cartierville")
+                           & (dataframe["Date_Plantation"].dt.year == 2010)]
+    
+    daily_info = fitlered.groupby("Date_Plantation").size().reset_index(False)
+    return daily_info
+
+
+if __name__ == "__main__":
+    from pathlib import Path
+    DATA_DIR = Path(__file__).resolve().parent / "assets" / "data"
+
+    dataframe = pd.read_csv(DATA_DIR / 'arbres.csv')
+    
+    dataframe = convert_dates(dataframe)
+    dataframe.to_csv(DATA_DIR / 'datetime-formatted.csv')
+    
+    dataframe = filter_years(dataframe, 2010, 2020)
+    dataframe.to_csv(DATA_DIR / 'date-filtered.csv')
+    
+    yearly_df = summarize_yearly_counts(dataframe)
+    yearly_df.to_csv(DATA_DIR / 'yearly-counts.csv')
+
+    data = restructure_df(yearly_df)
+    data.to_csv(DATA_DIR / 'restructured.csv')
+    
+    line_data = get_daily_info(dataframe, "Ahuntsic - Cartierville", 2010)
+    line_data.to_csv(DATA_DIR / 'line-data.csv')

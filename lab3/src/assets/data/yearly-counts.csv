@@ -1,0 +1,139 @@
+,Arrond_Nom,Date_Plantation,Counts
+0,Ahuntsic - Cartierville,2010,437
+1,Ahuntsic - Cartierville,2011,289
+2,Ahuntsic - Cartierville,2012,327
+3,Ahuntsic - Cartierville,2013,357
+4,Ahuntsic - Cartierville,2014,466
+5,Ahuntsic - Cartierville,2015,903
+6,Ahuntsic - Cartierville,2016,1028
+7,Ahuntsic - Cartierville,2017,936
+8,Ahuntsic - Cartierville,2018,815
+9,Ahuntsic - Cartierville,2019,851
+10,Ahuntsic - Cartierville,2020,144
+11,Côte-des-Neiges - Notre-Dame-de-Grâce,2010,401
+12,Côte-des-Neiges - Notre-Dame-de-Grâce,2011,108
+13,Côte-des-Neiges - Notre-Dame-de-Grâce,2012,458
+14,Côte-des-Neiges - Notre-Dame-de-Grâce,2013,395
+15,Côte-des-Neiges - Notre-Dame-de-Grâce,2014,378
+16,Côte-des-Neiges - Notre-Dame-de-Grâce,2015,606
+17,Côte-des-Neiges - Notre-Dame-de-Grâce,2016,474
+18,Côte-des-Neiges - Notre-Dame-de-Grâce,2017,803
+19,Côte-des-Neiges - Notre-Dame-de-Grâce,2018,623
+20,Côte-des-Neiges - Notre-Dame-de-Grâce,2019,685
+21,Côte-des-Neiges - Notre-Dame-de-Grâce,2020,79
+22,LaSalle,2010,1
+23,LaSalle,2011,147
+24,LaSalle,2012,522
+25,LaSalle,2016,120
+26,LaSalle,2017,336
+27,LaSalle,2018,48
+28,LaSalle,2019,1175
+29,Le Plateau-Mont-Royal,2010,278
+30,Le Plateau-Mont-Royal,2011,283
+31,Le Plateau-Mont-Royal,2012,410
+32,Le Plateau-Mont-Royal,2013,314
+33,Le Plateau-Mont-Royal,2014,381
+34,Le Plateau-Mont-Royal,2015,378
+35,Le Plateau-Mont-Royal,2016,526
+36,Le Plateau-Mont-Royal,2017,383
+37,Le Plateau-Mont-Royal,2018,347
+38,Le Plateau-Mont-Royal,2019,544
+39,Le Sud-Ouest,2010,388
+40,Le Sud-Ouest,2011,248
+41,Le Sud-Ouest,2012,738
+42,Le Sud-Ouest,2013,386
+43,Le Sud-Ouest,2014,441
+44,Le Sud-Ouest,2015,548
+45,Le Sud-Ouest,2016,341
+46,Le Sud-Ouest,2017,491
+47,Le Sud-Ouest,2018,543
+48,Le Sud-Ouest,2019,479
+49,Le Sud-Ouest,2020,211
+50,Mercier - Hochelaga-Maisonneuve,2010,115
+51,Mercier - Hochelaga-Maisonneuve,2011,130
+52,Mercier - Hochelaga-Maisonneuve,2012,355
+53,Mercier - Hochelaga-Maisonneuve,2013,494
+54,Mercier - Hochelaga-Maisonneuve,2014,390
+55,Mercier - Hochelaga-Maisonneuve,2015,512
+56,Mercier - Hochelaga-Maisonneuve,2016,1280
+57,Mercier - Hochelaga-Maisonneuve,2017,395
+58,Mercier - Hochelaga-Maisonneuve,2018,303
+59,Mercier - Hochelaga-Maisonneuve,2019,663
+60,Mercier - Hochelaga-Maisonneuve,2020,172
+61,Pierrefonds - Roxboro,2010,1010
+62,Pierrefonds - Roxboro,2011,3
+63,Pierrefonds - Roxboro,2012,84
+64,Pierrefonds - Roxboro,2013,20
+65,Pierrefonds - Roxboro,2014,207
+66,Pierrefonds - Roxboro,2015,302
+67,Pierrefonds - Roxboro,2016,677
+68,Pierrefonds - Roxboro,2017,475
+69,Pierrefonds - Roxboro,2018,507
+70,Pierrefonds - Roxboro,2019,553
+71,Rivière-des-Prairies - Pointe-aux-Trembles,2010,272
+72,Rivière-des-Prairies - Pointe-aux-Trembles,2011,333
+73,Rivière-des-Prairies - Pointe-aux-Trembles,2012,212
+74,Rivière-des-Prairies - Pointe-aux-Trembles,2013,287
+75,Rivière-des-Prairies - Pointe-aux-Trembles,2014,535
+76,Rivière-des-Prairies - Pointe-aux-Trembles,2015,576
+77,Rivière-des-Prairies - Pointe-aux-Trembles,2016,459
+78,Rivière-des-Prairies - Pointe-aux-Trembles,2017,783
+79,Rivière-des-Prairies - Pointe-aux-Trembles,2018,553
+80,Rivière-des-Prairies - Pointe-aux-Trembles,2019,529
+81,Rivière-des-Prairies - Pointe-aux-Trembles,2020,110
+82,Rosemont - La Petite-Patrie,2010,290
+83,Rosemont - La Petite-Patrie,2011,266
+84,Rosemont - La Petite-Patrie,2012,372
+85,Rosemont - La Petite-Patrie,2013,338
+86,Rosemont - La Petite-Patrie,2014,493
+87,Rosemont - La Petite-Patrie,2015,560
+88,Rosemont - La Petite-Patrie,2016,914
+89,Rosemont - La Petite-Patrie,2017,629
+90,Rosemont - La Petite-Patrie,2018,598
+91,Rosemont - La Petite-Patrie,2019,654
+92,Rosemont - La Petite-Patrie,2020,336
+93,Saint-Laurent,2010,4
+94,Saint-Laurent,2011,2
+95,Saint-Laurent,2012,24
+96,Saint-Laurent,2013,385
+97,Saint-Laurent,2014,347
+98,Saint-Laurent,2015,29
+99,Saint-Laurent,2016,1
+100,Saint-Léonard,2010,68
+101,Saint-Léonard,2011,67
+102,Saint-Léonard,2012,163
+103,Saint-Léonard,2013,355
+104,Saint-Léonard,2014,306
+105,Saint-Léonard,2015,451
+106,Saint-Léonard,2016,583
+107,Saint-Léonard,2017,416
+108,Saint-Léonard,2018,301
+109,Saint-Léonard,2019,300
+110,Verdun,2014,8
+111,Verdun,2015,1
+112,Verdun,2016,18
+113,Verdun,2017,35
+114,Verdun,2018,289
+115,Verdun,2019,33
+116,Ville-Marie,2010,270
+117,Ville-Marie,2011,260
+118,Ville-Marie,2012,360
+119,Ville-Marie,2013,477
+120,Ville-Marie,2014,678
+121,Ville-Marie,2015,710
+122,Ville-Marie,2016,1083
+123,Ville-Marie,2017,1026
+124,Ville-Marie,2018,540
+125,Ville-Marie,2019,985
+126,Ville-Marie,2020,49
+127,Villeray-Saint-Michel - Parc-Extension,2010,331
+128,Villeray-Saint-Michel - Parc-Extension,2011,217
+129,Villeray-Saint-Michel - Parc-Extension,2012,348
+130,Villeray-Saint-Michel - Parc-Extension,2013,392
+131,Villeray-Saint-Michel - Parc-Extension,2014,441
+132,Villeray-Saint-Michel - Parc-Extension,2015,700
+133,Villeray-Saint-Michel - Parc-Extension,2016,861
+134,Villeray-Saint-Michel - Parc-Extension,2017,1326
+135,Villeray-Saint-Michel - Parc-Extension,2018,733
+136,Villeray-Saint-Michel - Parc-Extension,2019,1117
+137,Villeray-Saint-Michel - Parc-Extension,2020,2
