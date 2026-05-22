@@ -95,13 +95,17 @@ def get_daily_info(dataframe, arrond, year):
         (dataframe["Arrond_Nom"] == arrond) &
         (dataframe["Date_Plantation"].dt.year == year)
     ]
-    
-    daily_info = (
-            filtered.groupby("Date_Plantation")
-            .size()
-            .reset_index(name="Counts")
-        )    
-    return daily_info
+
+    daily = (filtered.groupby("Date_Plantation").size().reset_index(name="Counts")
+    )
+
+    # create full date range for the year
+    full_range = pd.date_range(start=f"{year}-01-01", end=f"{year}-12-31")
+
+    daily = daily.set_index("Date_Plantation").reindex(full_range, fill_value=0)
+
+    daily = daily.rename_axis("Date_Plantation").reset_index()    
+    return daily
 
 
 # if __name__ == "__main__":
