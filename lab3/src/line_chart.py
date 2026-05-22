@@ -18,7 +18,24 @@ def get_empty_figure():
 
     # TODO : Construct the empty figure to display. Make sure to 
     # set dragmode=False in the layout.
-    return None
+    fig = px.scatter()
+    add_rectangle_shape(fig)
+
+    fig.add_annotation(
+        text='No data to display. Select a cell<br>in the heatmap for more information.',
+        x=0.5,
+        y=0.5,
+        xref='paper',
+        yref='paper',
+        showarrow=False
+    )
+    fig.update_layout(
+        dragmode=False,
+        xaxis_visible=False,
+        yaxis_visible=False
+    )
+    return fig
+    # return None
 
 
 def add_rectangle_shape(fig):
@@ -32,7 +49,19 @@ def add_rectangle_shape(fig):
         0.25% to 0.75% the height of the figure.
     '''
     # TODO : Draw the rectangle
-    return None
+    fig.add_shape(
+        type='rect',
+        xref='paper',
+        yref='paper',
+        x0=0,
+        x1=1,
+        y0=0.25,
+        y1=0.75,
+        fillcolor=THEME['pale_color'],
+        line_width=0
+    )
+    return fig
+    # return None
 
 
 def get_figure(line_data, arrond, year):
@@ -57,4 +86,59 @@ def get_figure(line_data, arrond, year):
             The figure to be displayed
     '''
     # TODO : Construct the required figure. Don't forget to include the hover template
-    return None
+    if line_data is None or len(line_data) == 0:
+        return get_empty_figure()
+
+    fig = px.line(
+        line_data,
+        x='Date_Plantation',
+        y='Trees',
+        title='Trees planted in ' + str(arrond) + ' in ' + str(year)
+    )
+
+    if len(line_data) == 1:
+        fig.update_traces(mode='markers')
+    fig.update_traces(
+        hovertemplate=hover_template.get_linechart_hover_template()
+    )
+    fig.update_xaxes(tickformat='%d %b')
+    fig.update_yaxes(title='Trees')
+    fig.update_layout(dragmode=False)
+
+    return fig
+    # return None
+
+
+
+
+if __name__ == "__main__":
+    from pathlib import Path
+    import pandas as pd
+
+    from preprocess import (
+        convert_dates,
+        filter_years,
+        get_daily_info
+    )
+
+    DATA_DIR = Path(__file__).resolve().parent / "assets" / "data"
+    dataframe = pd.read_csv(DATA_DIR / "arbres.csv")
+    dataframe = convert_dates(dataframe)
+    dataframe = filter_years(dataframe, 2010, 2020)
+
+    line_data = get_daily_info(
+        dataframe,
+        "Ahuntsic - Cartierville",
+        2010
+    )
+
+    # renaming the columns for testing
+    line_data.columns = ["Date_Plantation", "Trees"]
+
+    fig = get_figure(
+        line_data,
+        "Ahuntsic - Cartierville",
+        2010
+    )
+
+    fig.show()
