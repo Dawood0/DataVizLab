@@ -92,8 +92,8 @@ def get_figure(line_data, arrond, year):
     fig = px.line(
         line_data,
         x='Date_Plantation',
-        y='Trees',
-        title='Trees planted in ' + str(arrond) + ' in ' + str(year)
+  y='Counts',
+          title='Trees planted in ' + str(arrond) + ' in ' + str(year)
     )
 
     if len(line_data) == 1:
@@ -102,7 +102,7 @@ def get_figure(line_data, arrond, year):
         hovertemplate=hover_template.get_linechart_hover_template()
     )
     fig.update_xaxes(tickformat='%d %b')
-    fig.update_yaxes(title='Trees')
+    fig.update_yaxes(title='Counts')
     fig.update_layout(dragmode=False)
 
     return fig
@@ -111,7 +111,7 @@ def get_figure(line_data, arrond, year):
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     from pathlib import Path
     import pandas as pd
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     )
 
     # renaming the columns for testing
-    line_data.columns = ["Date_Plantation", "Trees"]
+    line_data.columns = ["Date_Plantation", "Counts"]
 
     fig = get_figure(
         line_data,
