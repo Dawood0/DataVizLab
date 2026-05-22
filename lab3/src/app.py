@@ -26,7 +26,11 @@ import template
 app = dash.Dash(__name__)
 app.title = 'TP3 | INF8808'
 
-dataframe = pd.read_csv('./assets/data/arbres.csv')
+from pathlib import Path
+
+DATA_DIR = Path(__file__).resolve().parent / "assets" / "data"
+dataframe = pd.read_csv(DATA_DIR / "arbres.csv")
+# dataframe = pd.read_csv('../assets/data/arbres.csv')
 
 dataframe = preprocess.convert_dates(dataframe)
 dataframe = preprocess.filter_years(dataframe, 2010, 2020)
