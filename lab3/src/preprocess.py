@@ -72,7 +72,7 @@ def restructure_df(yearly_df):
             The restructured dataframe
     '''
     # TODO : Restructure df and fill empty cells with 0
-    restructured = yearly_df.pivot(index="Arrond_Nom", columns="Date_Plantation").fillna(0)
+    restructured = yearly_df.pivot(index="Arrond_Nom", columns="Date_Plantation", values="Counts").fillna(0)
     return restructured
 
 
@@ -91,10 +91,16 @@ def get_daily_info(dataframe, arrond, year):
             neighborhood and year.
     '''
     # TODO : Get daily tree count data and return
-    fitlered = dataframe[(dataframe["Arrond_Nom"]== "Ahuntsic - Cartierville")
-                           & (dataframe["Date_Plantation"].dt.year == 2010)]
+    filtered = dataframe[
+        (dataframe["Arrond_Nom"] == arrond) &
+        (dataframe["Date_Plantation"].dt.year == year)
+    ]
     
-    daily_info = fitlered.groupby("Date_Plantation").size().reset_index(False)
+    daily_info = (
+            filtered.groupby("Date_Plantation")
+            .size()
+            .reset_index(name="Counts")
+        )    
     return daily_info
 
 
