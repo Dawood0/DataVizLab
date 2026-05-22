@@ -27,22 +27,14 @@ def get_figure(data):
 #     print(data)
     
         
-#     heatmap_data = data.pivot_table(index="Neighborhood",columns="Year",values="Trees",aggfunc="sum",fill_value=0)
-#     fig = px.imshow(heatmap_data,x=heatmap_data.columns,y=heatmap_data.index,color_continuous_scale="Viridis",labels=dict(x="Year", y="Neighborhood", color="Trees"),aspect="auto")
+    # heatmap_data = data.pivot_table(index="Neighborhood",columns="Year",values="Trees",aggfunc="sum",fill_value=0)
+    heatmap_data = data
+    fig = px.imshow(heatmap_data,x=heatmap_data.columns,y=heatmap_data.index,color_continuous_scale="Viridis",labels=dict(x="Year", y="Neighborhood", color="Trees"),aspect="auto")
 
-    fig = px.imshow(
-      data,
-      x=data.columns,
-      y=data.index,
-      color_continuous_scale="Viridis",
-      labels=dict(x="Year", y="Neighborhood", color="Trees"),
-      aspect="auto"
-  )
     #Make sure to set dragmode=False in
     fig.update_layout(dragmode=False)
 
-    # fig.update_xaxes(tickmode="array",tickvals=list(heatmap_data.columns),ticktext=list(heatmap_data.columns))
-    fig.update_xaxes(tickmode="array", tickvals=list(data.columns), ticktext=list(data.columns))
+    fig.update_xaxes(tickmode="array",tickvals=list(heatmap_data.columns),ticktext=list(heatmap_data.columns))
     #Also don't forget to include the hover template.
     fig.update_traces(hovertemplate=hover_template.get_heatmap_hover_template()
 )
