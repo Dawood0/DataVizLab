@@ -106,25 +106,3 @@ def get_daily_info(dataframe, arrond, year):
 
     daily = daily.rename_axis("Date_Plantation").reset_index()    
     return daily
-
-
-# if __name__ == "__main__":
-#     from pathlib import Path
-#     DATA_DIR = Path(__file__).resolve().parent / "assets" / "data"
-
-#     dataframe = pd.read_csv(DATA_DIR / 'arbres.csv')
-    
-#     dataframe = convert_dates(dataframe)
-#     dataframe.to_csv(DATA_DIR / 'datetime-formatted.csv')
-    
-#     dataframe = filter_years(dataframe, 2010, 2020)
-#     dataframe.to_csv(DATA_DIR / 'date-filtered.csv')
-    
-#     yearly_df = summarize_yearly_counts(dataframe)
-#     yearly_df.to_csv(DATA_DIR / 'yearly-counts.csv')
-
-#     data = restructure_df(yearly_df)
-#     data.to_csv(DATA_DIR / 'restructured.csv')
-    
-#     line_data = get_daily_info(dataframe, "Ahuntsic - Cartierville", 2010)
-#     line_data.to_csv(DATA_DIR / 'line-data.csv')
