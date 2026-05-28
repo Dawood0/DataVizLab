@@ -35,12 +35,3 @@ def get_figure(data):
     return fig
     #return None
 
-def main():
-    data = pd.read_csv(r"C:\School\INF8808E\Lab 2\DataVizLab\lab3\src\assets\data\yearly-counts.csv",index_col=0)
-
-    fig = get_figure(data)
-    fig.show()
-
-
-if __name__ == "__main__":
-    main()
