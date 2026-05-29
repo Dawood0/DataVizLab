@@ -89,6 +89,20 @@ def update_animation_menu(fig):
             dict(type = "buttons",
                 buttons=[
                     dict(label="Animate"),
+
+                    ## trying to adjust the speed of animaationn
+                    #   dict(
+                    #     label="Animate",
+                    #     method="animate",
+                    #     args=[
+                    #         None,
+                    #         {
+                    #             "frame": {"duration": 300, "redraw": False},
+                    #             "transition": {"duration": 2000},
+                    #             "fromcurrent": True,
+                    #         },
+                    #     ],
+                    # ),
                     dict(label="Stop", visible=False)
                 ])
         ]
@@ -107,8 +121,9 @@ def update_axes_labels(fig):
             The updated figure
     '''
     # TODO : Update labels
+    fig.update_xaxes(title="GDP per capita ($ USD)")
+    fig.update_yaxes(title="CO2 emissions per capita (metric tonnes)")
     return fig
-
 
 def update_template(fig):
     '''
@@ -121,8 +136,10 @@ def update_template(fig):
             The updated figure
     '''
     # TODO : Update template
+    fig.update_layout(
+        template="simple_white"
+    )
     return fig
-
 
 def update_legend(fig):
     '''
@@ -134,4 +151,7 @@ def update_legend(fig):
             The updated figure
     '''
     # TODO : Update legend
+    fig.update_layout(
+        legend_title_text="Legend"
+    )
     return fig

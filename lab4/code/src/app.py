@@ -10,11 +10,10 @@
     This file contains the source code for TP4.
 '''
 import json
+from pathlib import Path
 
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
-# from dash import html, dcc
+from dash import html, dcc
 
 import pandas as pd
 
@@ -24,7 +23,8 @@ import bubble
 app = dash.Dash(__name__)
 app.title = 'TP4 | INF8808'
 
-with open('../src/assets/data/countriesData.json') as data_file:
+data_path = Path(__file__).parent / 'assets' / 'data' / 'countriesData.json'
+with data_path.open(encoding='utf-8') as data_file:
     data = json.load(data_file)
 
 df_2000 = pd.json_normalize(data, '2000')
