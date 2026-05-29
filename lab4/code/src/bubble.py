@@ -38,7 +38,6 @@ def get_plot(my_df, gdp_range, co2_range):
         hover_name="Country Name",
         log_x=True,
         log_y=True,
-        size_min=6,
         size_max=30,
         range_x=gdp_range,
         range_y=co2_range
@@ -108,7 +107,7 @@ def update_axes_labels(fig):
             The updated figure
     '''
     # TODO : Update labels
-    return None
+    return fig
 
 
 def update_template(fig):
@@ -122,7 +121,7 @@ def update_template(fig):
             The updated figure
     '''
     # TODO : Update template
-    return None
+    return fig
 
 
 def update_legend(fig):
@@ -135,4 +134,4 @@ def update_legend(fig):
             The updated figure
     '''
     # TODO : Update legend
-    return None
+    return fig
