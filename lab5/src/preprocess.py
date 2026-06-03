@@ -75,14 +75,3 @@ def get_neighborhoods(montreal_data):
     locations = []
     for feature in montreal_data["features"]: locations.append(feature["properties"]["NOM"])
     return locations
-
-# # testing 
-# from pathlib import Path
-# import json
-
-# BASE_DIR = Path(__file__).resolve().parent
-
-# with open(BASE_DIR / 'assets/data/montreal.json', encoding='utf-8') as data_file:
-#     montreal_data = json.load(data_file)
-# locations = get_neighborhoods(montreal_data)
-# print(locations)
