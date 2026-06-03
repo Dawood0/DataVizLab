@@ -25,7 +25,9 @@ def to_df(data):
             my_df: The corresponding dataframe
     '''
     # TODO : Convert JSON formatted data to dataframe
-    return None
+    my_df = pd.DataFrame(data["features"])
+    my_df = pd.json_normalize(my_df["properties"])
+    return my_df
 
 
 def update_titles(my_df):
@@ -40,7 +42,8 @@ def update_titles(my_df):
                 made according to the 'TITLES' dictionary
     '''
     # TODO : Update the titles
-    return None
+    my_df["TYPE_SITE_INTERVENTION"] = my_df["TYPE_SITE_INTERVENTION"].replace(TITLES)
+    return my_df
 
 
 def sort_df(my_df):
@@ -54,7 +57,8 @@ def sort_df(my_df):
             my_df: The sorted dataframe
     '''
     # TODO : Sort the df
-    return None
+    my_df = my_df.sort_values("TYPE_SITE_INTERVENTION")
+    return my_df
 
 
 def get_neighborhoods(montreal_data):
@@ -68,4 +72,17 @@ def get_neighborhoods(montreal_data):
                 neighborhoods in the data set
     '''
     # TODO : Return the array of neighborhoods
-    return None
+    locations = []
+    for feature in montreal_data["features"]: locations.append(feature["properties"]["NOM"])
+    return locations
+
+# # testing 
+# from pathlib import Path
+# import json
+
+# BASE_DIR = Path(__file__).resolve().parent
+
+# with open(BASE_DIR / 'assets/data/montreal.json', encoding='utf-8') as data_file:
+#     montreal_data = json.load(data_file)
+# locations = get_neighborhoods(montreal_data)
+# print(locations)
