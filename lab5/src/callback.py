@@ -2,7 +2,7 @@
     This file contains the functions to call when
     a click is detected on the map, depending on the context
 '''
-import dash_html_components as html
+from dash import html
 
 
 def no_clicks(style):

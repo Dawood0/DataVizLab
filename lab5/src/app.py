@@ -10,10 +10,11 @@
     This file contains the source code for TP5.
 '''
 import json
+from pathlib import Path
 
 import dash
-# import dash_html_components as html
-# import dash_core_components as dcc
+import dash_html_components as html
+import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 from dash import html
 import plotly.graph_objects as go
@@ -27,10 +28,12 @@ import callback
 app = dash.Dash(__name__)
 app.title = 'TP5 | INF8808'
 
-with open('./assets/data/montreal.json', encoding='utf-8') as data_file:
+DATA_DIR = Path(__file__).resolve().parent / 'assets' / 'data'
+
+with open(DATA_DIR / 'montreal.json', encoding='utf-8') as data_file:
     montreal_data = json.load(data_file)
 
-with open('./assets/data/projetpietonnisation2017.geojson',
+with open(DATA_DIR / 'projetpietonnisation2017.geojson',
           encoding='utf-8') as data_file:
     street_data = json.load(data_file)
 
