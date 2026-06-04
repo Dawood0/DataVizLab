@@ -18,7 +18,8 @@ def no_clicks(style):
             style: The updated display style for the panel
     '''
     # TODO : Handle no clicks on the map
-    return None, None, None, None
+    if style['visibility'] == 'hidden':
+        return "", "", "", style
 
 
 def map_base_clicked(title, mode, theme, style):
@@ -38,7 +39,10 @@ def map_base_clicked(title, mode, theme, style):
             style: The updated display style for the panel
     '''
     # TODO : Handle clicks on the map base
-    return None, None, None, None
+    if style['visibility'] == 'hidden':
+        return "", "", "", style
+    else:
+        return title, mode, theme, style
 
 
 def map_marker_clicked(figure, curve, point, title, mode, theme, style): # noqa : E501 pylint: disable=unused-argument too-many-arguments line-too-long
@@ -60,4 +64,17 @@ def map_marker_clicked(figure, curve, point, title, mode, theme, style): # noqa 
             style: The updated display style for the panel
     '''
     # TODO : Handle clicks on the markers
-    return None, None, None, None
+    
+    #need to define color
+    # title = html.Span(title_text, style={'color': color, 'fontWeight': 'bold'})
+    title = figure['data'][curve]['text'][point]
+    
+    mode_text = figure['data'][curve]['customdata'][point][0]
+    mode = [html.Span(mode_text, style={'fontWeight': 'bold'}), html.Br()]
+    
+    theme_text = figure['data'][curve]['customdata'][point][1]
+    theme = ([html.Span("Thématique:"), html.Ul(children=[html.Li(text) for text in theme_text.split('\n')])] if theme_text else None)
+    
+    style['visibility'] = 'visible'
+     
+    return title, mode, theme, style

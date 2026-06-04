@@ -68,7 +68,8 @@ def add_scatter_traces(fig, street_df):
             size = 20,
         ),
         text = street_df.get("NOM_PROJET"),
-        hovertemplate = hover.HOVER_TEMPLATE
+        customdata = list(zip(street_df["MODE_IMPLANTATION"], street_df["OBJECTIF_THEMATIQUE"])),
+        hovertemplate = hover.map_marker_hover_template(street_df.get("NOM_PROJET"))
     ))
     
     return fig
