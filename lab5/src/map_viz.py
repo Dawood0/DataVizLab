@@ -34,6 +34,7 @@ def add_choro_trace(fig, montreal_data, locations, z_vals, colorscale):
     fig.add_trace(go.Choroplethmapbox(
         geojson = montreal_data,
         locations = locations,
+        featureidkey='properties.NOM',
         z = z_vals,
         colorscale = colorscale,
         marker_opacity = 0.2,
