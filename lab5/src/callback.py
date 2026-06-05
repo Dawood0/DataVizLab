@@ -67,8 +67,10 @@ def map_marker_clicked(figure, curve, point, title, mode, theme, style): # noqa 
     
     #need to define color
     # title = html.Span(title_text, style={'color': color, 'fontWeight': 'bold'})
-    title = figure['data'][curve]['text'][point]
-    
+    title_text = figure['data'][curve]['text'][point]
+    color = figure['data'][curve]['marker']['color']
+    title = html.Span(title_text, style= {'color':color})
+    # title = html.Span(title_text, style= {'color':color, 'fontWeight':'bold'})
     mode_text = figure['data'][curve]['customdata'][point][0]
     mode = [html.Span(mode_text, style={'fontWeight': 'bold'}), html.Br()]
     

@@ -61,8 +61,12 @@ def add_scatter_traces(fig, street_df):
 
     '''
     # TODO : Add the scatter markers to the map base
-    
-    for site_type, group in street_df.groupby("TYPE_SITE_INTERVENTION"):
+
+    colors = px.colors.qualitative.Plotly
+
+    for i, (site_type, group) in enumerate(street_df.groupby("TYPE_SITE_INTERVENTION")):
+        color = colors[i % len(colors)]
+
         fig.add_trace(go.Scattermapbox(
             lat=group["LATITUDE"],
             lon=group["LONGITUDE"],
@@ -70,6 +74,7 @@ def add_scatter_traces(fig, street_df):
             name=site_type,
             marker=go.scattermapbox.Marker(
                 size=20,
+                color=color
             ),
             text=group["NOM_PROJET"],
             customdata=list(zip(
@@ -80,6 +85,25 @@ def add_scatter_traces(fig, street_df):
         ))
 
     return fig
+    
+    # for site_type, group in street_df.groupby("TYPE_SITE_INTERVENTION"):
+    #     fig.add_trace(go.Scattermapbox(
+    #         lat=group["LATITUDE"],
+    #         lon=group["LONGITUDE"],
+    #         mode="markers",
+    #         name=site_type,
+    #         marker=go.scattermapbox.Marker(
+    #             size=20,
+    #         ),
+    #         text=group["NOM_PROJET"],
+    #         customdata=list(zip(
+    #             group["MODE_IMPLANTATION"],
+    #             group["OBJECTIF_THEMATIQUE"]
+    #         )),
+    #         hovertemplate=hover.map_marker_hover_template(site_type)
+    #     ))
+
+    # return fig
 
 
 
