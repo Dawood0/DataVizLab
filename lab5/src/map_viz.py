@@ -61,18 +61,23 @@ def add_scatter_traces(fig, street_df):
     '''
     # TODO : Add the scatter markers to the map base
     
-    fig.add_trace(go.Scattermapbox(
-        lat = street_df["LATITUDE"],
-        lon = street_df["LONGITUDE"],
-        mode = "markers",
-        marker = go.scattermapbox.Marker(
-            size = 20,
-        ),
-        text = street_df.get("NOM_PROJET"),
-        customdata = list(zip(street_df["MODE_IMPLANTATION"], street_df["OBJECTIF_THEMATIQUE"])),
-        hovertemplate = hover.map_marker_hover_template(street_df.get("NOM_PROJET"))
-    ))
-    
+    for site_type, group in street_df.groupby("TYPE_SITE_INTERVENTION"):
+        fig.add_trace(go.Scattermapbox(
+            lat=group["LATITUDE"],
+            lon=group["LONGITUDE"],
+            mode="markers",
+            name=site_type,
+            marker=go.scattermapbox.Marker(
+                size=20,
+            ),
+            text=group["NOM_PROJET"],
+            customdata=list(zip(
+                group["MODE_IMPLANTATION"],
+                group["OBJECTIF_THEMATIQUE"]
+            )),
+            hovertemplate=hover.map_marker_hover_template(site_type)
+        ))
+
     return fig
 
 
