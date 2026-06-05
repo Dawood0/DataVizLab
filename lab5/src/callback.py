@@ -65,7 +65,7 @@ def map_marker_clicked(figure, curve, point, title, mode, theme, style): # noqa 
     '''
     # TODO : Handle clicks on the markers
     
-    #need to define color
+
     # title = html.Span(title_text, style={'color': color, 'fontWeight': 'bold'})
     title_text = figure['data'][curve]['text'][point]
     color = figure['data'][curve]['marker']['color']
